@@ -1,6 +1,6 @@
 name: 'ioBroker Testing: check and lint'
 author: 'AlCalzone'
-#description: 'Greet someone'
+description: 'Perform type checking, linting and testing of an ioBroker adapter package'
 
 inputs:
   node-version:
@@ -24,6 +24,9 @@ inputs:
   lint-command: 
     description: 'Overwrite the default lint command'
     default: 'npm run lint'
+  test-command:
+    description: 'Overwrite the default test command'
+    default: 'npm run test:package' 
 
 runs:
   using: "composite"
@@ -61,4 +64,4 @@ runs:
 
     - name: Test package files
       shell: bash
-      run: npm run test:package
+      run: "${{ inputs.test-command }}"

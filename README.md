@@ -13,6 +13,8 @@ Shared Github Actions for ioBroker testing workflows: Check and lint step
 | `type-checking-command` | Overwrite the default type checking command                                                                                                                                                          | ❌        | `'npm run check'` |
 | `lint`                  | Set to `'true'` when the adapter has a linter configured                                                                                                                                             | ❌        |     `'false'`     |
 | `lint-command`          | Overwrite the default lint command                                                                                                                                                                   | ❌        | `'npm run lint'`  |
+| `test-command`          | Overwrite the default test command                                                                                                                                                                   | ❌        | `'npm run test:package'`  |
+
 
 ## Usage
 
