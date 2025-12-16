@@ -21,21 +21,21 @@ inputs:
   lint:
     description: 'Set to true when the adapter has a linter configured'
     default: 'false'
-  lint-command: 
+  lint-command:
     description: 'Overwrite the default lint command'
     default: 'npm run lint'
   test-command:
     description: 'Overwrite the default test command'
-    default: 'npm run test:package' 
+    default: 'npm run test:package'
 
 runs:
   using: "composite"
   steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
         cache: ${{ (inputs.package-cache != 'false' && inputs.package-cache != '') && inputs.package-cache || '' }}
@@ -63,5 +63,6 @@ runs:
         fi
 
     - name: Test package files
+      if: ${{ inputs.test-command != 'false' }}
       shell: bash
       run: "${{ inputs.test-command }}"
